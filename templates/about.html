@@ -1,0 +1,52 @@
+{% extends "base.html"%}
+{% block content %}
+
+     
+    
+    <h2>{{page_title}}</h2>
+    <p>In the early 1930s Tolkien was pursuing an academic career at Oxford as Rawlinson and Bosworth Professor of
+        Anglo-Saxon, with a fellowship at Pembroke College. Several of his poems had been published in magazines and
+        small collections, including Goblin Feet[9] and The Cat and the Fiddle: A Nursery Rhyme Undone and its
+        Scandalous Secret Unlocked,[10] a reworking of the nursery rhyme Hey Diddle Diddle. His creative endeavours at
+        this time also included letters from Father Christmas to his children—illustrated manuscripts that featured
+        warring gnomes and goblins, and a helpful polar bear—alongside the creation of elven languages and an attendant
+        mythology, including the Book of Lost Tales, which he had been creating since 1917. These works all saw
+        posthumous publication.[11]
+
+        In a 1955 letter to W. H. Auden, Tolkien recollects that he began work on The Hobbit one day early in the 1930s,
+        when he was marking School Certificate papers. He found a blank page. Suddenly inspired, he wrote the words, "In
+        a hole in the ground there lived a hobbit." By late 1932 he had finished the story and then lent the manuscript
+        to several friends, including C. S. Lewis[12] and a student of Tolkien's named Elaine Griffiths.[13] In 1936,
+        when Griffiths was visited in Oxford by Susan Dagnall, a staff member of the publisher George Allen & Unwin, she
+        is reported to have either lent Dagnall the book[13] or suggested she borrow it from Tolkien.[14] In any event,
+        Dagnall was impressed by it, and showed the book to Stanley Unwin, who then asked his 10-year-old son Rayner to
+        review it. Rayner's favourable comments settled Allen & Unwin's decision to publish Tolkien's book.[15]</p>
+
+        {% for member in company %}
+            <div class="row featurette">
+                {% if loop.index %2 != 0%}
+                    <div class="col-md-7">
+                        <h3><a href="/about/{{member.url}}">{{loop.index}}. {{member.name}}</a></h3>
+                        <p>{{member.description}}</p>
+                    </div>
+                    <div class="col-md-5">
+                        <img src="{{member.image_source}}" alt="" class="featurette-image image-responsive">
+                    </div>
+                    {% else %}
+                    <div class="col-md-5">
+                        <img src="{{member.image_source}}" alt="" class="featurette-image image-responsive">
+                    </div>
+                    <div class="col-md-7">
+                        <h3><a href="/about/{{member.url}}">{{loop.index}}. {{member.name}}</a></h3>
+                        <p>{{member.description}}</p>
+                    </div>
+                    
+                {% endif %}
+            </div>
+
+            {% if loop.index != loop.length %}
+                <hr class="featurette-divider">
+            {% endif %}
+
+        {% endfor %}
+{% endblock %}
